@@ -16,7 +16,7 @@ class Wechat {
     if (global.wechatProxy) {
       this.WechatUrl = global.wechatProxy;
     } else {
-      this.WechatUrl = this.proxyKey ? 'https://dash.vertex-app.top/proxy/' + this.proxyKey + '/' : 'https://qyapi.weixin.qq.com/';
+      this.WechatUrl = 'https://qyapi.weixin.qq.com/';
     }
   };
 
