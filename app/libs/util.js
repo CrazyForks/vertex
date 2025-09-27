@@ -211,7 +211,10 @@ exports.scrapeNameByFile = async function (_filename, type, _year = false, useFu
     throw new Error('请求 TMDB Api 返回有误, 请重试');
   }
   body.results = body.results.sort((a, b) => b.popularity - a.popularity);
-  body.results = body.results.filter(item => item.name === searchKey || item.original_name === searchKey);
+  const temp = body.results.filter(item => item.name === searchKey || item.original_name === searchKey);
+  if (temp[0]) {
+    body.results = temp;
+  }
   logger.debug('根据文件名抓取影视剧名', filename, searchKey, body.results[0]?.name || body.results[0]?.title || '');
   logger.debug('tmdb api url', url);
   if (_year) {
